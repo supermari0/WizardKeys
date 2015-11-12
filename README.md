@@ -2,11 +2,18 @@ WizardKeys v0.1
 By Mario Villaplana
 
 HOW TO COMPILE AND RUN:
+
 Type the following commands in terminal while in the folder holding WizardKeys:
+
+```
 gcc -o WizardKeys WizardKeys.c -framework IOKit -framework ApplicationServices
 -framework CoreFoundation
 
-./WizardKeys
+sudo ./WizardKeys
+```
+
+sudo is needed because certain versions of OS X require root permissions to
+create the event tap.
 
 This is a keyboard mod for Mac laptops running OS X 10.6 and above. Every time
 you press a key with WizardKeys running in the background, the program switches
@@ -16,9 +23,6 @@ casting spells with a computer
 A small API for modifying and reading keyboard LED brightness programatically
 is also included in MacKeyLEDAPI.h/c. Feel free to use this in your own
 projects.
-
-Warning: WizardKeys has only been tested on a MacBook Pro 5,5 running OS X
-10.6.8. No functionality is guaranteed, especially on different platforms.
 
 TODO if I continue working on this hack:
 0. Create a Makefile.
