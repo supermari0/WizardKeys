@@ -1,6 +1,8 @@
 WizardKeys v0.1
 By Mario Villaplana
 
+This project has not been worked on in many years.
+
 HOW TO COMPILE AND RUN:
 
 Type the following commands in terminal while in the folder holding WizardKeys:
