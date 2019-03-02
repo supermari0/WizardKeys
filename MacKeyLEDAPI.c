@@ -2,11 +2,11 @@
  * This implements a few functions for accessing and modifying the keyboard
  * lights on Mac laptops in OS X 10.6 and above.
  *
- * By Mario Villaplana http://www.stanford.edu/~mariojv
+ * By Mario Villaplana
  *
  * Inspired by/some code taken from Amit Singh's site below the header
  * inclusions.
- * 
+ *
  * I also looked at some posts on these mailing lists and forums to figure out
  * how to handle some deprecated functions from Amit's site:
  * http://forums.macrumors.com/archive/index.php/t-1133446.html
@@ -20,7 +20,7 @@
 
 /* This enum defines the different functions available for hardware
  * manipulation by the IOConnectCallMethod. Taken directly from Amit Singh's
- * OSX Internals website at http://osxbook.com/book/bonus/chapter10/light/. */ 
+ * OSX Internals website at http://osxbook.com/book/bonus/chapter10/light/. */
 enum {
     kGetSensorReadingID   = 0,  // getSensorReading(int *, int *)
     kGetLEDBrightnessID   = 1,  // getLEDBrightness(int, int *)
@@ -36,7 +36,7 @@ enum {
 };
 
 /* This defines the connection used by the IOConnectCall methods. Must be set
- * by the startLightService function before being used. */ 
+ * by the startLightService function before being used. */
 static io_connect_t connect = 0;
 
 /* This function performs initialization work to ensure that the connection to
@@ -56,7 +56,7 @@ void startLightService() {
         Ending program.");
     exit(1);
   }
-  
+
   // Open the matching service. The static variable connect is used to allow
   // communication with the IOConnect APIs.
   kr = IOServiceOpen(serviceObject, mach_task_self(), 0, &connect);
@@ -100,7 +100,7 @@ void setKeyboardLEDValue(uint64_t ledValue) {
   uint64_t inValues[2];
   inValues[0] = 0;
   inValues[1] = ledValue;
-  
+
   kr = IOConnectCallMethod(connect, kSetLEDBrightnessID, inValues, inputCount,
       nil, 0, &fakeOutput, &outputCount, nil, 0);
   if (kr != KERN_SUCCESS) {
@@ -124,7 +124,7 @@ void setKeyboardLEDValueFade(uint64_t ledValue, uint64_t time_ms) {
   inValues[0] = 0;
   inValues[1] = ledValue;
   inValues[2] = time_ms;
-  
+
   kr = IOConnectCallMethod(connect, kSetLEDFadeID, inValues, inputCount,
       nil, 0, &fakeOutput, &outputCount, nil, 0);
   if (kr != KERN_SUCCESS) {

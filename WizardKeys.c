@@ -1,7 +1,7 @@
 /* WizardKeys.c
  *
  * This program turns the keyboard backlight on and off with each key press.
- * 
+ *
  * Compile with gcc -o WizardKeys WizardKeys.c -framework IOKit -framework
  * ApplicationServices -framework CoreFoundation
  *
@@ -35,7 +35,7 @@ int main(int argc, const char * argv[]) {
     exit(1);
   }
   CFRunLoopSourceRef runLoopSource =
-    CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0); 
+    CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
   CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource,
       kCFRunLoopCommonModes);
   CGEventTapEnable(eventTap, true); // needed? should be enabled by default
